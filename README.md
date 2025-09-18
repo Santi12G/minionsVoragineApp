@@ -5,4 +5,4 @@
 ### El index.html contiene la escena corriendo del mundo terminado implementado para webGL en Babylon.js playground
 
 
-![Captura 1](Captura1.png)
+![Captura 1](Captura3.png)
