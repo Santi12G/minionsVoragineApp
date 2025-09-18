@@ -40,6 +40,20 @@ var createScene = function () {
     "https://thumbs.dreamstime.com/b/textura-de-la-tierra-79262873.jpg", scene);
     tierraMat.bumpTexture = new BABYLON.Texture("https://th.bing.com/th/id/R.92fe8e25fdf803f4e7e7c246157dc8cb?rik=3rJQqxf3Lsit%2fA&riu=http%3a%2f%2fwww.thebest3d.com%2fdogwaffle%2fdownload%2fNormalMap%2fnormalmap1.jpg&ehk=Db0kgClrunCYH4g0lFlV6Djj9SsKwNkStW2F9YzH4PU%3d&risl=&pid=ImgRaw&r=0", scene);
 
+
+    var pisoDentroCasaMat = new BABYLON.StandardMaterial("pisoDentroCasaMat", scene);
+    pisoDentroCasaMat.diffuseTexture = new BABYLON.Texture(
+    "https://tse1.mm.bing.net/th/id/OIP.azB8RHGVNb6rgG3qBHO9nQHaF6?w=800&h=639&rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+    pisoDentroCasaMat.bumpTexture = new BABYLON.Texture("https://thumbs.dreamstime.com/b/normal-map-seamless-pattern-siding-floor-wall-noise-texture-normal-map-seamless-pattern-siding-floor-wall-247774432.jpg?w=360", scene);
+
+    var pisoCasaMat = new BABYLON.StandardMaterial("pisoCasaMat", scene);
+    pisoCasaMat.diffuseTexture = new BABYLON.Texture(
+    "https://tse4.mm.bing.net/th/id/OIP.czHVYYAerMjG59_JF4q6AgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+    pisoCasaMat.bumpTexture = new BABYLON.Texture("https://santi12g.github.io/minionsVoragineApp/pisoPiedraNormal.jpg", scene);
+
+
+    
+
     /*BABYLON.SceneLoader.ImportMesh("",Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename, scene, function(newMeshes){
         newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
     
@@ -53,7 +67,7 @@ var createScene = function () {
         result.meshes.forEach(mesh => {
             mesh.material = houseCimMat;
             mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
-            mesh.position.y = 0.5;
+            mesh.position.y = 0.3;
             mesh.rotationQuaternion = null;
             mesh.rotation.x = BABYLON.Tools.ToRadians(45);
             mesh.rotation.z = BABYLON.Tools.ToRadians(0);
@@ -68,7 +82,7 @@ var createScene = function () {
         result.meshes.forEach(mesh => {
             mesh.material = houseFacMat;
             mesh.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
-            mesh.position.y = 0.5;
+            mesh.position.y = 0.3;
             mesh.rotationQuaternion = null;
             mesh.rotation.x = BABYLON.Tools.ToRadians(45);
             mesh.rotation.z = BABYLON.Tools.ToRadians(0);
@@ -77,13 +91,13 @@ var createScene = function () {
     });
 
     BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "rio.glb").then((result) => {
-    	//result.meshes[1].position.z = -1.8;
+    	//result.meshes[1].position.z = -3;
         //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
         result.meshes[1].rotationQuaternion = null;
         result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
         result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(-90);
-        result.meshes[1].position.y = 0.23;
-        result.meshes[1].position.z = 1.5;
+        result.meshes[1].position.y = 0.05;
+        result.meshes[1].position.z = 1.05;
         
         //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
         result.meshes[1].material = mat1;
@@ -97,13 +111,82 @@ var createScene = function () {
         //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
         //result.meshes[1].rotationQuaternion = null;
         //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
-        result.meshes[1].position.x = -1.5
+        result.meshes[1].scaling = new BABYLON.Vector3(0.25, 0.25, 0.25);
+        result.meshes[1].position.x = -1.5;
         result.meshes[1].position.y = 0.25;
         //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
         result.meshes[1].material = tierraMat;
         result.meshes[1].scaling = new BABYLON.Vector3(0.25,0.25,0.25);
         
   
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "pisoDentroCasa.glb").then((result) => {
+    	//result.meshes[1].position.z = -1.8;
+        //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
+        //result.meshes[1].rotationQuaternion = null;
+        //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
+        result.meshes[1].position.x = 0.05;
+        result.meshes[1].position.y = 0.4;
+        result.meshes[1].position.z = 0.1
+        //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
+        result.meshes[1].material = pisoDentroCasaMat;
+        result.meshes[1].scaling = new BABYLON.Vector3(0.25,0.25,0.25);
+        
+  
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "pisoCasa.glb").then((result) => {
+    	//result.meshes[1].position.z = -1.8;
+        //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
+        //result.meshes[1].rotationQuaternion = null;
+        //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
+        result.meshes[1].position.x = -0.55;
+        result.meshes[1].position.y = 0.41;
+        result.meshes[1].position.z = 0.1
+        //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
+        result.meshes[1].material = pisoCasaMat;
+        result.meshes[1].scaling = new BABYLON.Vector3(0.25,0.25,0.25);
+        
+  
+    });
+
+
+    // el techo sale desproporcional
+
+    /*
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "techo.glb").then((result) => {
+    	//result.meshes[1].position.z = -1.8;
+        //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
+        //result.meshes[1].rotationQuaternion = null;
+        //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
+        //result.meshes[1].position.x = -0.55;
+        //result.meshes[1].position.y = 0.41;
+        //result.meshes[1].position.z = 0.1
+        //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
+        //result.meshes[1].material = pisoCasaMat;
+        result.meshes[1].scaling = new BABYLON.Vector3(0.01, 1, 0.01);
+        
+  
+    });*/
+
+
+
+
+
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "palmeras.glb").then((result) => {
+    
+    // esto se usa cuando una malla tiene varios objetos en una misma para poder aplicarle
+    // los cambios a cada una de estas
+        result.meshes.forEach(mesh => {
+            mesh.material = houseFacMat;
+            mesh.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            mesh.position.y = 0.3;
+            mesh.rotationQuaternion = null;
+            mesh.rotation.x = BABYLON.Tools.ToRadians(0);
+            mesh.rotation.z = BABYLON.Tools.ToRadians(0);
+            mesh.rotation.y = BABYLON.Tools.ToRadians(0);
+        });
     });
 
 
