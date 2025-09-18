@@ -12,9 +12,8 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
 
-    const roofMat = new BABYLON.StandardMaterial("roofMat");
-    roofMat.diffuseTexture = new BABYLON.Texture("https://assets.babylonjs.com/environments/roof.jpg", scene);
-
+    // Para las texturas de los cimientos de la casa
+    
 
     
     // Our built-in 'ground' shape.
@@ -25,33 +24,84 @@ var createScene = function () {
     ground.material.diffuseTexture = groundTexture;
 
     var mat1 = new BABYLON.StandardMaterial("mat1", scene);
-	mat1.diffuseTexture = new BABYLON.Texture("https://tse3.mm.bing.net/th/id/OIP.QSCdJJYGXBrT3bmfGS32GQHaF7?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+	mat1.diffuseTexture = new BABYLON.Texture("https://cdn.pixabay.com/photo/2018/08/04/20/34/water-3584391_1280.jpg", scene);
 	mat1.bumpTexture = new BABYLON.Texture("https://tse4.mm.bing.net/th/id/OIP.fvJpA7tH88Ut82mCl5MQfwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+    
+    var houseCimMat = new BABYLON.StandardMaterial("houseCimMat", scene);
+    houseCimMat.diffuseTexture = new BABYLON.Texture(
+    "https://th.bing.com/th/id/R.4e36d2767d995a79c71f7ec04109ff3c?rik=HPa8akzBV02mww&pid=ImgRaw&r=0", scene);
+    
+    var houseFacMat = new BABYLON.StandardMaterial("houseFacMat", scene);
+    houseFacMat.diffuseTexture = new BABYLON.Texture(
+    "https://tse3.mm.bing.net/th/id/OIP.ODW5piQqtRWnrMPmqrxBJwHaE7?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+    
+    var tierraMat = new BABYLON.StandardMaterial("tierraMat", scene);
+    tierraMat.diffuseTexture = new BABYLON.Texture(
+    "https://thumbs.dreamstime.com/b/textura-de-la-tierra-79262873.jpg", scene);
+    tierraMat.bumpTexture = new BABYLON.Texture("https://th.bing.com/th/id/R.92fe8e25fdf803f4e7e7c246157dc8cb?rik=3rJQqxf3Lsit%2fA&riu=http%3a%2f%2fwww.thebest3d.com%2fdogwaffle%2fdownload%2fNormalMap%2fnormalmap1.jpg&ehk=Db0kgClrunCYH4g0lFlV6Djj9SsKwNkStW2F9YzH4PU%3d&risl=&pid=ImgRaw&r=0", scene);
 
     /*BABYLON.SceneLoader.ImportMesh("",Assets.meshes.Yeti.rootUrl, Assets.meshes.Yeti.filename, scene, function(newMeshes){
         newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
     
     });*/
 
-    BABYLON.SceneLoader.ImportMeshAsync("", "https://aannewball.github.io/myCoolBabylonApp/", "mico.glb").then((result) => {
-    	result.meshes[1].position.x = 4;
-        result.meshes[1].material = roofMat;
-        result.meshes[1].rotate  = new BABYLON.Vector3(0, 45, 0);
-        result.meshes[1].scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "cimientosCasa.glb").then((result) => {
     
+    // esto se usa cuando una malla tiene varios objetos en una misma para poder aplicarle
+    // los cambios a cada una de estas
+       
+        result.meshes.forEach(mesh => {
+            mesh.material = houseCimMat;
+            mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+            mesh.position.y = 0.5;
+            mesh.rotationQuaternion = null;
+            mesh.rotation.x = BABYLON.Tools.ToRadians(45);
+            mesh.rotation.z = BABYLON.Tools.ToRadians(0);
+            mesh.rotation.y = BABYLON.Tools.ToRadians(0);
+        });
+    });
 
-
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "estructuraCasa.glb").then((result) => {
+    
+    // esto se usa cuando una malla tiene varios objetos en una misma para poder aplicarle
+    // los cambios a cada una de estas
+        result.meshes.forEach(mesh => {
+            mesh.material = houseFacMat;
+            mesh.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            mesh.position.y = 0.5;
+            mesh.rotationQuaternion = null;
+            mesh.rotation.x = BABYLON.Tools.ToRadians(45);
+            mesh.rotation.z = BABYLON.Tools.ToRadians(0);
+            mesh.rotation.y = BABYLON.Tools.ToRadians(0);
+        });
     });
 
     BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "rio.glb").then((result) => {
-    	result.meshes[1].position.x = 1;
+    	//result.meshes[1].position.z = -1.8;
         //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
         result.meshes[1].rotationQuaternion = null;
+        result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
         result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(-90);
-        result.meshes[1].position.y = 0.5
+        result.meshes[1].position.y = 0.23;
+        result.meshes[1].position.z = 1.5;
+        
         //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
         result.meshes[1].material = mat1;
-        result.meshes[1].scaling = new BABYLON.Vector3(0.1,0.1,0.1);
+        result.meshes[1].scaling = new BABYLON.Vector3(0.25,0.25,0.25);
+        
+  
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "tierra.glb").then((result) => {
+    	//result.meshes[1].position.z = -1.8;
+        //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
+        //result.meshes[1].rotationQuaternion = null;
+        //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
+        result.meshes[1].position.x = -1.5
+        result.meshes[1].position.y = 0.25;
+        //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
+        result.meshes[1].material = tierraMat;
+        result.meshes[1].scaling = new BABYLON.Vector3(0.25,0.25,0.25);
         
   
     });
