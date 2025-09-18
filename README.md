@@ -5,4 +5,4 @@
 ### El index.html contiene la escena corriendo del mundo terminado implementado para webGL en Babylon.js playground
 
 
-![Captura 1]("https://santi12g.github.io/minionsVoragineApp/Captura de pantalla 2025-09-18 162825.png")
+![Captura 1](Captura1.png)
