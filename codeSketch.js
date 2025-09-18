@@ -51,6 +51,11 @@ var createScene = function () {
     "https://tse4.mm.bing.net/th/id/OIP.czHVYYAerMjG59_JF4q6AgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
     pisoCasaMat.bumpTexture = new BABYLON.Texture("https://santi12g.github.io/minionsVoragineApp/pisoPiedraNormal.jpg", scene);
 
+    var techoMat = new BABYLON.StandardMaterial("techoMat", scene);
+    techoMat.diffuseTexture = new BABYLON.Texture(
+    "https://tse3.mm.bing.net/th/id/OIP.fnSk_bVCSfjWRy4K68bDxAHaFf?rs=1&pid=ImgDetMain&o=7&rm=3", scene);
+    
+
 
     
 
@@ -154,21 +159,20 @@ var createScene = function () {
 
     // el techo sale desproporcional
 
-    /*
+    
     BABYLON.SceneLoader.ImportMeshAsync("", "https://santi12g.github.io/minionsVoragineApp/", "techo.glb").then((result) => {
-    	//result.meshes[1].position.z = -1.8;
-        //result.meshes[1].rotation.x = BABYLON.Tools.ToRadians(90);
-        //result.meshes[1].rotationQuaternion = null;
-        //result.meshes[1].rotation.y = BABYLON.Tools.ToRadians(180);
-        //result.meshes[1].position.x = -0.55;
-        //result.meshes[1].position.y = 0.41;
-        //result.meshes[1].position.z = 0.1
-        //result.meshes[1].rotate  = new BABYLON.Vector3(90, 90, 0);
-        //result.meshes[1].material = pisoCasaMat;
-        result.meshes[1].scaling = new BABYLON.Vector3(0.01, 1, 0.01);
-        
-  
-    });*/
+    	// esto se usa cuando una malla tiene varios objetos en una misma para poder aplicarle
+    // los cambios a cada una de estas
+        result.meshes.forEach(mesh => {
+            mesh.material = techoMat;
+            mesh.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+            mesh.position.y = 0.3;
+            mesh.rotationQuaternion = null;
+            mesh.rotation.x = BABYLON.Tools.ToRadians(45);
+            mesh.rotation.z = BABYLON.Tools.ToRadians(0);
+            mesh.rotation.y = BABYLON.Tools.ToRadians(0);
+        });
+    });
 
 
 
